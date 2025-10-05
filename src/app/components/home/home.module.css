@@ -1,0 +1,95 @@
+.hero {
+  background: transparent;
+  /* move the hero down under the fixed header */
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: flex-start; /* start instead of center to push content down */
+  justify-content: center;
+  padding-top: calc(var(--header-height) + 380px); /* additional offset under header */
+  color: #fff;
+  text-align: center;
+  margin-top: 100px;
+  margin-left: -50px;
+  position: relative;
+}
+
+.inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.heading {
+  font-size: 72px;
+  line-height: 1.02;
+  margin: 0 0 24px 0;
+  font-weight: 800;
+}
+
+.gradient {
+  background: linear-gradient(90deg,#6b5cff,#ff7aa2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub {
+  opacity: 0.85;
+  margin-bottom: 36px;
+  font-size: 18px;
+}
+
+.ctas {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%);
+  /* slightly smaller so it doesn't bleed into following sections */
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle at center, rgba(139,107,255,0.28) 0%, rgba(255,122,162,0.16) 30%, transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.inner { position: relative; z-index: 5; }
+
+.btnOutline {
+  padding: 14px 34px;
+  border-radius: 32px;
+  color: #fff;
+  background: transparent;
+  border: 2px solid transparent;
+  position: relative;
+  font-weight: 700;
+}
+
+.btnOutline::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 36px;
+  background: linear-gradient(90deg,#6b5cff,#ff7aa2);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+}
+
+.btnFilled {
+  padding: 14px 34px;
+  border-radius: 32px;
+  color: #fff;
+  background: linear-gradient(90deg,#6b5cff,#ff7aa2);
+  font-weight: 700;
+}

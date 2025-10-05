@@ -1,0 +1,19 @@
+.footer{ background:#0f0b12; color:rgba(255,255,255,0.95); padding:80px ;width: 1500px; }
+.inner{ display:flex; gap:40px; align-items:flex-start }
+/* center content inside the full-width footer and give comfortable gutters */
+.inner { max-width: 1600px; margin: 0 auto; padding: 0 32px; }
+.leftCol{ flex:1 }
+.logoLarge{ width:120px }
+.tagline{ margin-top:12px; color:rgba(255,255,255,0.9); font-size:18px }
+.socialRow{ margin-top:18px; display:flex; gap:14px; align-items:center }
+.socialRow img{ width:28px; height:28px; filter:brightness(0) invert(1) }
+.copy{ margin-top:18px; color:rgba(255,255,255,0.6) }
+.rightCols{ display:flex; gap:60px }
+.col h4{ color:#6b5cff; margin-bottom:18px }
+.links{ list-style:none; padding:0; margin:0 }
+.links li{ margin:12px 0; color:rgba(255,255,255,0.9) }
+.link{ color:rgba(255,255,255,0.9); text-decoration:none; transition:color .15s ease, opacity .15s ease }
+.link:hover,.link:focus{ color:#fff; opacity:0.95; text-decoration:underline }
+.link:focus-visible{ outline:2px solid #6b5cff; outline-offset:3px }
+
+@media(max-width:900px){ .inner{ flex-direction:column } .rightCols{ flex-direction:column; gap:28px } }

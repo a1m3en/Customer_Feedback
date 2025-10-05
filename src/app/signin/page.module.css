@@ -1,0 +1,37 @@
+.signin{ padding:80px 0; background:linear-gradient(180deg,#0f0b12 0%, #09060a 100%); color:#fff; min-height:80vh;margin-top: 50px; }
+.cardWrap{ max-width:1100px; margin:0 auto; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; box-shadow:0 20px 60px rgba(2,6,23,0.7); overflow:hidden; display:grid; grid-template-columns:1fr 1fr }
+
+.visual{ padding:48px; background:linear-gradient(180deg, rgba(107,92,255,0.08), rgba(255,122,162,0.04)); display:flex; flex-direction:column; justify-content:center; gap:18px }
+.logoWrap{ display:flex; align-items:center; gap:12px }
+.logo{ width:40px }
+.brand{ font-weight:700; font-size:1.125rem }
+.heading{ font-size:28px; margin:0 }
+.lead{ color:rgba(255,255,255,0.85); max-width:360px }
+.benefits{ margin:12px 0 0 0; padding-left:18px; color:rgba(255,255,255,0.9) }
+.benefits li{ margin:8px 0 }
+
+.formCol{ padding:48px; display:flex; flex-direction:column; justify-content:center }
+.title{ margin:0 0 8px 0; font-size:22px }
+.socialRow{ display:flex; gap:12px; margin:10px 0 8px 0 }
+.socialBtn{ flex:1; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:#fff; cursor:pointer }
+.or{ text-align:center; color:rgba(255,255,255,0.6); margin:10px 0 }
+
+.form{ display:flex; flex-direction:column; gap:12px }
+.label{ display:flex; flex-direction:column; font-size:14px; color:rgba(255,255,255,0.9) }
+.input{ margin-top:8px; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02); color:#fff }
+.rowBetween{ display:flex; justify-content:space-between; align-items:center; margin-top:6px }
+.checkbox input{ margin-right:8px }
+.smallLink{ color:rgba(255,255,255,0.8); text-decoration:underline }
+
+.actions{ margin-top:16px }
+.btn{ padding:12px 18px; border-radius:10px; background:linear-gradient(90deg,#6b5cff,#ff7aa2); color:#fff; border:none; cursor:pointer; width:100%; font-weight:700 }
+.message{ margin-top:12px; color:rgba(255,255,255,0.8) }
+
+.footerNote{ margin-top:14px; color:rgba(255,255,255,0.8) }
+
+@media(max-width:900px){
+	.cardWrap{ grid-template-columns:1fr; }
+	.visual{ display:block; padding:28px }
+	.formCol{ padding:28px }
+}
+

@@ -1,0 +1,23 @@
+.chatSection{  color:#fff; padding:72px 0 ;margin-top:100px;}
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center }
+.chatMock{ background: linear-gradient(180deg,#161216,#1e171b); border-radius:12px; padding:20px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); height:380px; position:relative }
+.windowControls{ display:flex; gap:8px }
+.dot{ width:12px; height:12px; border-radius:50% }
+.chatInner{ margin-top:18px; padding:20px; background:rgba(0,0,0,0.12); border-radius:8px }
+.brandIcon{ width:36px; height:36px; border-radius:8px; background:linear-gradient(90deg,#6b5cff,#ff7aa2); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-weight:700 }
+.inputBubble{ margin-top:18px; background:rgba(255,255,255,0.06); padding:12px 18px; border-radius:8px; color:rgba(255,255,255,0.9); box-shadow: 0 8px 18px rgba(0,0,0,0.6) }
+.prompts{ display:flex; gap:12px; margin-top:26px }
+.prompt{ width:78px; height:36px; border-radius:18px; background:rgba(0,0,0,0.2); box-shadow: 0 6px 12px rgba(0,0,0,0.6) }
+.contentCol{ padding-left:12px }
+.kicker{ color:#6b5cff; font-weight:700; letter-spacing:2px; margin-bottom:12px }
+.headline{ font-size:40px; margin:0 0 12px 0 }
+.lead{ color:rgba(255,255,255,0.8); margin-bottom:18px }
+.signature{ display:flex; align-items:center; gap:12px }
+.avatar{ width:48px; height:48px; border-radius:50% }
+.author{ font-weight:700 }
+.role{ color:rgba(255,255,255,0.7) }
+.notation{ margin-left:auto }
+.notationLogo{ width:88px; filter:brightness(0) invert(1) }
+.cta{ margin-top:22px; padding:14px 22px; border-radius:28px; background:linear-gradient(90deg,#6b5cff,#ff7aa2); color:#fff; border:none; cursor:pointer }
+
+@media(max-width:900px){ .grid{ grid-template-columns:1fr } }
