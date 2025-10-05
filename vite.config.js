@@ -11,7 +11,8 @@ module.exports = async () => {
         '@': path.resolve(__dirname, 'src')
       }
     },
-    base: '/customer-feedback/',
+  // Use the exact repo name casing for GitHub Pages (case-sensitive)
+  base: '/Customer_Feedback/',
     // let esbuild parse JSX in .js files from this repository during transform
     esbuild: {
       jsx: 'automatic'
