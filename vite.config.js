@@ -12,11 +12,16 @@ module.exports = async () => {
       }
     },
     base: '/customer-feedback/',
-    // let esbuild parse JSX in .js files from this repository
+    // let esbuild parse JSX in .js files from this repository during transform
     esbuild: {
-      jsx: 'automatic',
-      loader: {
-        '.js': 'jsx'
+      jsx: 'automatic'
+    },
+    // ensure dependency scanning treats .js files as JSX
+    optimizeDeps: {
+      esbuildOptions: {
+        loader: {
+          '.js': 'jsx'
+        }
       }
     },
     server: {

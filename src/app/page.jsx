@@ -12,15 +12,14 @@ import styles from "./page.module.css";
 export default function Page() {
   return (
     <div className={styles.page}>
-  <Navbar />
-  <Home />
-  <Brand />
-  <CaseStudy />
-  <ChatCase />
-  <Opinions />
-  <Integrations />
-  <Footer />
+      <Navbar />
+      <Home />
+      <Brand />
+      <CaseStudy />
+      <ChatCase />
+      <Opinions />
+      <Integrations />
+      <Footer />
     </div>
   );
-
 }

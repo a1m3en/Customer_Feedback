@@ -1,7 +1,4 @@
-"use client";
-
 import React, { useRef, useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import styles from "./opinions.module.css";
 
 export default function Opinions() {
@@ -44,45 +41,34 @@ export default function Opinions() {
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
   const hasMountedRef = useRef(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    // guard against index out-of-range or children being removed by React
     const children = container.children || [];
     if (index < 0 || index >= children.length) return;
     const child = children[index];
     if (!child) return;
-    // ensure nodes are still connected to DOM before attempting to scroll
     const safeScroll = () => {
       try {
         if (child.isConnected && container.isConnected && child.scrollIntoView) {
           child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
           return;
         }
-
-        // fallback: compute center position and perform container.scrollTo
         const childRect = child.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
         const offsetLeft = child.offsetLeft - (container.clientWidth / 2 - child.clientWidth / 2);
         container.scrollTo({ left: offsetLeft, behavior: "smooth" });
       } catch (err) {
-        // eslint-disable-next-line no-console
         console.warn("safeScroll failed", err);
       }
     };
 
-    // skip scrolling on first mount to avoid forcing page jump on load
     if (!hasMountedRef.current) {
       hasMountedRef.current = true;
       return;
     }
 
-    // only adjust scroll when we are on the homepage; avoid interfering when navigating back from other pages
-    if (pathname !== "/") return;
-
-    // run on the next animation frame to reduce chance of DOM mutations during render
     const id = requestAnimationFrame(safeScroll);
     return () => cancelAnimationFrame(id);
   }, [index]);
@@ -140,7 +126,7 @@ export default function Opinions() {
 
         <div data-aos="fade-up" className={styles.cards} ref={containerRef} role="list">
           {testimonials.map((t, idx) => (
-            <article data-aos="zoom-in" 
+            <article data-aos="zoom-in"
               key={`${t.name}-${idx}`}
               className={`${styles.card} ${idx === index ? styles.active : ""}`}
               role="listitem"
@@ -186,4 +172,3 @@ export default function Opinions() {
     </section>
   );
 }
-

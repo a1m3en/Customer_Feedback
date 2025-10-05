@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import styles from "./brand.module.css";
 
 // Use remote CDN icons for a smaller footprint and easier updates
@@ -18,22 +17,13 @@ export default function Brand() {
     <section data-aos="fade-up" className={styles.brandSection} aria-label="Trusted by">
       <div className="container">
         <div className={styles.titleWrap}>
-          <h3 className={styles.title}>
-            Redefining how the best companies build with feedback
-          </h3>
+          <h3 className={styles.title}>Redefining how the best companies build with feedback</h3>
         </div>
 
         <div className={styles.grid}>
           {LOGOS.map((logo) => (
             <div key={logo.url} className={styles.logoItem}>
-              <Image
-                src={logo.url}
-                alt={logo.alt}
-                className={styles.logoImg}
-                width={120}
-                height={40}
-                unoptimized
-              />
+              <img src={logo.url} alt={logo.alt} className={styles.logoImg} width={120} height={40} />
             </div>
           ))}
         </div>

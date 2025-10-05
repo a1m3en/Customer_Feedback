@@ -1,8 +1,4 @@
-"use client";
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import styles from "./navbar.module.css";
 
 const LINKS = [
@@ -49,11 +45,11 @@ const LINKS = [
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(null);
   const closeTimer = useRef(null);
-  const router = useRouter();
 
   useEffect(() => {
     return () => clearTimeout(closeTimer.current);
   }, []);
+
   return (
     <>
       <header data-aos="fade-down" className={styles.header}>
@@ -62,30 +58,19 @@ export default function Navbar() {
             <div className="d-flex align-items-center gap-3" style={{ zIndex: 3 }}>
               <a
                 role="button"
-                onClick={async (e) => {
+                href="#"
+                onClick={(e) => {
                   e.preventDefault();
-                  // navigate and ensure we land at the top of the page
                   try {
-                    await router.push('/');
-                  } catch (err) {
-                    // fallback: full reload
-                    window.location.href = '/';
-                    return;
-                  }
-
-                  // robustly reset scroll (cover documentElement/body differences)
-                  try {
+                    window.history.pushState({}, '', '/');
                     window.scrollTo({ top: 0, behavior: 'auto' });
-                    document.documentElement.scrollTop = 0;
-                    document.body.scrollTop = 0;
                   } catch (err) {
-                    /* ignore */
+                    window.location.href = '/';
                   }
                 }}
-                href="/"
                 className="d-flex align-items-center gap-2"
               >
-                <Image src="/logo.svg" alt="logo" width={36} height={36} />
+                <img src="/logo.svg" alt="logo" width={36} height={36} />
                 <div className={styles.brandText}>Enterprei</div>
               </a>
             </div>
@@ -110,9 +95,7 @@ export default function Navbar() {
                       closeTimer.current = setTimeout(() => setOpenMenu(null), 160);
                     }}
                   >
-                    <Link href={l.href} className="text-white">
-                      {l.label}
-                    </Link>
+                    <a href={l.href} className="text-white">{l.label}</a>
                     <div className={styles.dropdownMenu} role="menu" aria-hidden={openMenu !== l.label}>
                       <div className={styles.pointer} />
                       <ul className={styles.dropdownList}>
@@ -120,15 +103,15 @@ export default function Navbar() {
                           const slug = c.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                           const href = `/${l.label.toLowerCase()}/${slug}`;
                           return (
-                            <Link key={i} href={href} className={styles.dropdownItem} onClick={() => setOpenMenu(null)}>
+                            <a key={i} href={href} className={styles.dropdownItem} onClick={() => setOpenMenu(null)}>
                               {c.icon ? (
                                 <img src={c.icon} alt={c.title} className={styles.dropdownIcon} />
                               ) : (
                                 <div className={styles.dropdownIcon} />
                               )}
                               <span>{c.title}</span>
-                              <span className={styles.chev}>&rsaquo;</span>
-                            </Link>
+                              <span className={styles.chev}>›</span>
+                            </a>
                           );
                         })}
                       </ul>
@@ -155,4 +138,3 @@ export default function Navbar() {
     </>
   );
 }
-
