@@ -1,4 +1,4 @@
-.footer{ background:#0f0b12; color:rgba(255,255,255,0.95); padding:80px ;width: 1500px; }
+.footer{ background:#0f0b12; color:rgba(255,255,255,0.95); padding:80px ;width: 1500px;margin-left: 0; }
 .inner{ display:flex; gap:40px; align-items:flex-start }
 /* center content inside the full-width footer and give comfortable gutters */
 .inner { max-width: 1600px; margin: 0 auto; padding: 0 32px; }

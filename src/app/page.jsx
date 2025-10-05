@@ -4,7 +4,6 @@ import Home from "./components/home/Home";
 import Brand from "./components/brand/Brand";
 import CaseStudy from "./components/brand/CaseStudy";
 import ChatCase from "./components/brand/ChatCase";
-import Opinions from "./components/opinions/Opinions";
 import Integrations from "./components/integrations/Integrations";
 import Footer from "./components/footer/Footer";
 import styles from "./page.module.css";
@@ -17,7 +16,6 @@ export default function Page() {
       <Brand />
       <CaseStudy />
       <ChatCase />
-      <Opinions />
       <Integrations />
       <Footer />
     </div>

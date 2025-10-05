@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./caseStudy.module.css";
 
+const base = import.meta.env.BASE_URL || '/';
+
 export default function CaseStudy() {
   return (
     <section data-aos="fade-up" className={styles.caseSection} aria-label="Case study - Notion">
@@ -61,13 +63,13 @@ export default function CaseStudy() {
           </blockquote>
 
           <div className={styles.signature}>
-            <img src="/logo.svg" alt="author" className={styles.avatar} />
+            <img src={`${base}logo.svg`} alt="author" className={styles.avatar} />
             <div>
               <div className={styles.author}>Emma Auscher</div>
               <div className={styles.role}>Global VP of Customer Experience</div>
             </div>
             <div className={styles.notation}>
-              <img src="/brands/notion.svg" alt="Notion" className={styles.notationLogo} />
+              <img src={`${base}brands/notion.svg`} alt="Notion" className={styles.notationLogo} />
             </div>
           </div>
 

@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./chatCase.module.css";
 
+const base = import.meta.env.BASE_URL || '/';
+
 export default function ChatCase(){
   return (
     <section data-aos="fade-up" className={styles.chatSection} aria-label="Chat case study - Descript">
@@ -33,13 +35,13 @@ export default function ChatCase(){
           <p className={styles.lead}>"Wisdom saves me hours every week. I can condense feedback with a single click, replacing the tedious process of reading through hundreds of tickets. It's life-changing!"</p>
 
           <div className={styles.signature}>
-            <img src="/logo.svg" alt="author" className={styles.avatar} />
+            <img src={`${base}logo.svg`} alt="author" className={styles.avatar} />
             <div>
               <div className={styles.author}>Jill McKinney</div>
               <div className={styles.role}>Director of Customer Support</div>
             </div>
             <div className={styles.notation}>
-              <img src="/brands/slack.svg" alt="Descript" className={styles.notationLogo} />
+              <img src={`${base}brands/slack.svg`} alt="Descript" className={styles.notationLogo} />
             </div>
           </div>
 

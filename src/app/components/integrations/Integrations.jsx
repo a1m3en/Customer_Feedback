@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./integrations.module.css";
 
+const base = import.meta.env.BASE_URL || '/';
+
 const LOGOS = [
   "slack.svg",
   "figma.svg",
@@ -32,7 +34,7 @@ export default function Integrations(){
           <div className={styles.grid}>
             {LOGOS.map((file, idx) => (
               <div data-aos="fade-up" key={idx} className={`${styles.tile} ${idx===6?styles.heroTile:''}`}>
-                <img src={`/brands/${file}`} alt="logo" className={styles.logo} />
+                <img src={`${base}brands/${file}`} alt="logo" className={styles.logo} />
               </div>
             ))}
           </div>

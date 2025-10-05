@@ -8,8 +8,8 @@
   padding-top: calc(var(--header-height) + 380px); /* additional offset under header */
   color: #fff;
   text-align: center;
+  margin-left: -45px;
   margin-top: 100px;
-  margin-left: -50px;
   position: relative;
 }
 

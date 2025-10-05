@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import styles from "./page.module.css";
 import AosInit from "../components/AosInit";
 import Navbar from "../components/navbar/Navbar";
+const base = import.meta.env.BASE_URL || '/';
 
 export default function SignInPage() {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ export default function SignInPage() {
           <div className={styles.cardWrap} data-aos="fade-up">
             <div className={styles.visual} aria-hidden>
               <div className={styles.logoWrap}>
-                <img src="/logo.svg" alt="logo" className={styles.logo} />
+                <img src={`${base}logo.svg`} alt="logo" className={styles.logo} />
                 <div className={styles.brand}>Enterpret</div>
               </div>
               <h3 className={styles.heading}>Welcome back</h3>

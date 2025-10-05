@@ -1,20 +1,22 @@
 import React from "react";
 import styles from "./footer.module.css";
 
+const base = import.meta.env.BASE_URL || '/';
+
 export default function Footer(){
   return (
     <footer data-aos="fade-up" className={styles.footer} aria-label="Site footer" role="contentinfo">
       {/* use container-fluid so footer area spans full viewport width */}
       <div className={`container-fluid ${styles.inner}`}>
         <div className={styles.leftCol}>
-          <img src="/logo.svg" alt="Enterpret logo" className={styles.logoLarge} />
+          <img src={`${base}logo.svg`} alt="Enterpret logo" className={styles.logoLarge} />
           <p className={styles.tagline}>Bridging the gap between customers and builders.</p>
 
           <div className={styles.socialRow}>
-            <img src="/brands/slack.svg" alt="Slack" />
-            <img src="/brands/figma.svg" alt="Figma" />
-            <img src="/brands/canva.svg" alt="Canva" />
-            <img src="/brands/notion.svg" alt="Notion" />
+            <img src={`${base}brands/slack.svg`} alt="Slack" />
+            <img src={`${base}brands/figma.svg`} alt="Figma" />
+            <img src={`${base}brands/canva.svg`} alt="Canva" />
+            <img src={`${base}brands/notion.svg`} alt="Notion" />
           </div>
 
           <div className={styles.copy}>© Enterpret Inc. 2025</div>

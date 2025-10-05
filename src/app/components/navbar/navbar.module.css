@@ -22,6 +22,8 @@
   color: #fff;
   font-weight: 600;
   font-size: 1.125rem;
+  margin-left: 8px;
+  line-height: 36px;
 }
 
 .header .container {
@@ -30,13 +32,81 @@
   justify-content: space-between;
 }
 
-.centerNav {
+/* module-based container (replaces Bootstrap .container) */
+.container {
   position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* inner flex row to replace utility classes */
+.inner {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* brand/left area */
+.brandSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brandLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative; /* make inner the containing block for absolutely positioned centerNav */
+}
+
+/* center the nav visually in the header */
+.centerNav {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.centerNav a, .navLink {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  pointer-events: auto;
+  height: 76px; /* match header height for vertical centering */
+  color: #fff;
+  text-decoration: none;
+  padding: 0 12px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  border-radius: 8px;
+  transition: background .15s ease, transform .12s ease, color .12s ease;
+  cursor: pointer;
+}
+
+.centerNav a:hover, .navLink:hover {
+  background: rgba(255,255,255,0.02);
+  transform: translateY(-1px);
+}
+
+.navLink:focus {
+  outline: 2px solid rgba(122,162,255,0.12);
+  outline-offset: 4px;
 }
 
 .dropdown{ position:relative }
@@ -55,8 +125,9 @@
 /* ensure inner container doesn't create a boxed background */
 .header .container {
   background: transparent;
-  padding-left: 0;
-  padding-right: 0;
+  /* keep a small horizontal gutter so the navbar content doesn't touch the viewport edge */
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .centerNav a {
@@ -125,6 +196,20 @@
   /* center nav links instead of pushing them to the far right */
   justify-content: center;
   z-index: 2000;
+}
+
+/* actions on the right (replaces ms-auto and utility gap) */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.signIn {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .offcanvasContent {
