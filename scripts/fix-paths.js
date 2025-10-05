@@ -11,19 +11,28 @@ function rewriteFile(filePath) {
   // Force all local asset references to absolute URLs under the repo path.
   // This avoids fragile relative-prefix logic and works reliably when Pages serves
   // the site at https://<user>.github.io/customer-feedback/.
-  const repoPrefix = '/customer-feedback/';
+    // For GitHub Pages we expect BASE_PATH to be '/customer-feedback'. When
+    // BASE_PATH is not set (for example on Vercel) we skip path prefixing so
+    // assets resolve at the site root.
+    const basePath = process.env.BASE_PATH || '';
+    const repoPrefix = basePath ? `${basePath.replace(/\/$/, '')}/` : '';
 
   // Helper to strip leading ./ ../ or slashes
   const stripLeading = (p) => p.replace(/^(?:\.\.\/|\.\/|\/)+/, '');
 
   // Collapse any existing repeated repo prefixes first (idempotent)
-  s = s.replace(/(?:\/customer-feedback\/)+/g, '/customer-feedback/');
+    if (repoPrefix) {
+      const esc = repoPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      s = s.replace(new RegExp(`(?:${esc})+`, 'g'), repoPrefix);
+    }
 
   // Replace any occurrence of (optional ./ or ../ or /) followed by _next/, brands/, or logo.svg
   // with the absolute repo-prefixed path. This covers index pages and nested pages.
-  s = s.replace(/(?:\.\.\/|\.\/|\/)?_next\//g, repoPrefix + '_next/');
-  s = s.replace(/(?:\.\.\/|\.\/|\/)?brands\//g, repoPrefix + 'brands/');
-  s = s.replace(/(?:\.\.\/|\.\/|\/)?logo\.svg/g, repoPrefix + 'logo.svg');
+    if (repoPrefix) {
+      s = s.replace(/(?:\.\.\/|\.\/|\/)?_next\//g, repoPrefix + '_next/');
+      s = s.replace(/(?:\.\.\/|\.\/|\/)?brands\//g, repoPrefix + 'brands/');
+      s = s.replace(/(?:\.\.\/|\.\/|\/)?logo\.svg/g, repoPrefix + 'logo.svg');
+    }
 
   // Rewrite attribute values like href="/something" or src='./something' or href="../foo"
   // but avoid rewriting absolute URLs (http(s)://, //), mailto:, tel:, or anchors (#).
@@ -34,7 +43,10 @@ function rewriteFile(filePath) {
   });
 
   // Collapse any accidental repeated repo prefixes (e.g. /customer-feedback/customer-feedback/ -> /customer-feedback/)
-  s = s.replace(/(?:\/customer-feedback\/){2,}/g, '/customer-feedback/');
+    if (repoPrefix) {
+      const esc2 = repoPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      s = s.replace(new RegExp(`(?:${esc2}){2,}`, 'g'), repoPrefix);
+    }
 
   const before = fs.readFileSync(filePath, 'utf8');
   if (before !== s) {
