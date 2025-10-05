@@ -1,12 +1,9 @@
-// Allow configuring a deployment base path via the BASE_PATH env var.
-// When deploying to GitHub Pages we set BASE_PATH=/customer-feedback, but do
-// NOT set it on Vercel so assets and CSS resolve at the site root.
-const basePath = process.env.BASE_PATH || '';
-const assetPrefix = basePath ? `${basePath}/` : '';
-
-module.exports = {
-  output: 'export',
-  images: { unoptimized: true },
-  basePath,
-  assetPrefix,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export", // 👈 Enables static export
+  images: { unoptimized: true }, // GitHub Pages doesn't support Image Optimization
+  basePath: "/Customer_Feedback", // 👈 Use your repository name here
+  assetPrefix: "/Customer_Feedback/",
 };
+
+module.exports = nextConfig;
